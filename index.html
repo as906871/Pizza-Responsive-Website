@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> New Pizza Yum </title>
+
+  <!-- font awesome look -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet'>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- custom css file link -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- header section starts -->
+  <header class="header">
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+    <div class="logo">
+      <span>N</span><span>E</span><span>W</span><span></span>
+      <span>P</span><span>I</span><span>Z</span><span>Z</span><span>A</span><span></span>
+      <span>Y</span><span>U</span><span>M</span>
+    </div>
+
+    <nav class="navbar">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#review">Review</a>
+    </nav>
+    <a href="#" class="btn">Book a table</a>
+  </header>
+  <!-- header section ends -->
+
+
+  <!-- home section starts -->
+  <section class="home" id="home">
+    <div class="row">
+      <div class="content">
+        <h3> Fresh pizza at every time</h3>
+        <button class="glow-on-hover" type="button">Buy one now</button>
+      </div>
+      <div class="image">
+        <img src="images\pexels-beqa-tefnadze-803290-removebg.png" width="580" height="450" class="main-home-image"
+          alt="">
+      </div>
+    </div>
+
+  </section>
+  <!-- home section ends -->
+
+
+  <!-- about section starts -->
+  <section class="about" id="about">
+    <h1 class="heading"> about us <span>why choose us </span></h1>
+    <div class="row">
+      <div class="image">
+        <img src="images\IMG_20210831_204448.jpg" alt="">
+      </div>
+      <div class="content">
+        <h3 class="title">what's make our pizza special!</h3>
+        <text class="metal">THERE’S VERY LITTLE IN MY WORLD THAT A FOOT MASSAGE AND A THIN-CRUST,
+          EVERYTHING-ON-IT PIZZA WON’T SET RIGHT.
+          <span class="texture"></span>
+          <h2 style="color:black;">G.A. McKevett.</h2>
+        </text>
+        <a href="#" class="btnss">read more</a>
+        <div class="icons-container">
+          <div class="icons">
+            <!-- <img src="" alt=""> -->
+            <i class='fas fa-beer' style='font-size:36px'></i>
+            <h3>quality of pizza</h3>
+          </div>
+          <div class="icons">
+            <!-- <img src="" alt=""> -->
+            <i class='fas fa-city' style='font-size:36px'></i>
+            <h3>Our branch</h3>
+          </div>
+          <div class="icons">
+            <!-- <img src="" alt=""> -->
+            <i class='fas fa-shipping-fast' style='font-size:36px'></i>
+            <h3>free delivery</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- about section ends -->
+
+
+
+  <!-- pizza menu items -->
+
+
+
+  <section class="menu" id="menu">
+    <div class="menu-container">
+      <div class="menu-head">
+        <h1 class="heads" id="menu">Menu List<span> Special Food Menu </span></h1>
+      </div>
+
+      <div class="menu-btns">
+        <button type="button" class="menu-btnss active-btn" data-category="all"onclick="filterItems('all', this)">All</button>
+        <button type="button" class="menu-btnss" data-category="today-special" onclick="filterItems('today-special', this)">today's special</button>
+        <button type="button" class="menu-btnss" data-category="new-arrival"onclick="filterItems('new-arrival', this)">new arrivals</button>
+        <button type="button" class="menu-btnss" data-category="on-demand" onclick="filterItems('on-demand', this)">On Demand</button>
+
+      </div>
+
+      <div class="food-items" id="foodItemsContainer"> </div>
+    </div>
+  </section>
+
+  <script>
+    const foodItems = [
+      { name: "Banana Bread With Butter & Milk", image: "images/banana-bread-with-butter-and-milk.jpg", price: 22, category: "today-special" },
+      { name: "Chicken Legs", image: "images/chicken-legs-with-tomatoes-peppers-and-oranges.jpg", price: 29, category: "today-special" },
+      { name: "Juicy beef burger", image: "images/summer-juicy-beef-burger.jpg", price: 14, category: "new-arrival" },
+      { name: "Banana Bread With Butter & Milk", image: "images/banana-bread-with-butter-and-milk.jpg", price: 22, category: "on-demand" },
+      { name: "Barbecue", image: "images/barbecue.jpg", price: 29, category: "today-special" },
+      { name: "Barbecued Roasted Duck Ramen", image: "images/barbecued-roasted-duck-ramen.jpg", price: 14, category: "today-special" },
+      { name: "Bread With Seeds & Butter", image: "images/bread-with-seeds-and-butter.jpg", price: 22, category: "today-special" },
+      { name: "Breadfast Sandwich", image: "images/breakfast-sandwich-with-hummus-spread-and-fresh-vegetables.jpg", price: 29, category: "today-special" },
+      { name: "Brunch Skillet", image: "images/brunch-skillet-with-eggs-and-tomatoes.jpg", price: 14, category: "on-demand" },
+      { name: "Noodles", image: "images/noodles-with-egg-and-vegetables.jpg", price: 22, category: "on-demand" },
+      { name: "Chicken Legs", image: "images/chicken-legs-with-tomatoes-peppers-and-oranges.jpg", price: 29, category: "on-demand" },
+      { name: "Eggplant Cannelloni", image: "images/eggplant-cannelloni.jpg", price: 14, category: "new-arrival" },
+      { name: "French Fries", image: "images/french-fries-with-steak-and-beer.jpg", price: 22, category: "new-arrival" },
+      { name: "Fried Rice", image: "images/fried-rice-with-shrimps.jpg", price: 29, category: "on-demand" },
+      { name: "King Prawnsr", image: "images/king-prawns-with-green-lettuce.jpg", price: 14, category: "new-arrival" },
+      { name: "Juicy beef burger", image: "images/summer-juicy-beef-burger.jpg", price: 14, category: "new-arrival" },
+      { name: "Tacos with pulled pork", image: "images/tacos-with-pulled-pork-fresh-vegetables-and-cream.jpg", price: 22, category: "new-arrival" },
+      { name: "tiny pickles", image: "images/tiny-pickles-on-top-of-burger.jpg", price: 29, category: "on-demand" },
+      { name: "tortilla chips", image: "images/tortilla-chips-with-salsa.jpg", price: 14, category: "new-arrival" },
+    ];
+
+
+    const foodItemsContainer = document.getElementById("foodItemsContainer");
+    let activeButton = null;
+
+    function generateFoodItems(items) {
+      foodItemsContainer.innerHTML = "";
+
+      for (const item of items) {
+        const foodItemDiv = document.createElement("div");
+        foodItemDiv.className = `food-item ${item.category.toLowerCase()}`;
+
+        foodItemDiv.innerHTML = `
+          <div class="food-img">
+            <img src="${item.image}" alt="food image">
+          </div>
+          <div class="food-content">
+            <h4 class="food-name">${item.name}</h4>
+            <div class="line"></div>
+            <h4 class="food-price">$${item.price.toFixed(2)}</h4>
+            <ul class="rating">
+              ${generateStars()}
+            </ul>
+            <p class="category">Categories: <span>${item.category}</span></p>
+          </div>
+        `;
+
+        foodItemsContainer.appendChild(foodItemDiv);
+      }
+    }
+
+    function generateStars() {
+      const rating = 4;
+      let starsHtml = '';
+      for (let i = 0; i < 5; i++) {
+        starsHtml += `<li><i class="fas fa-star${i < rating ? '' : '-half'}"></i></li>`;
+      }
+      return starsHtml;
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      generateFoodItems(foodItems);
+      const allButton = document.querySelector('.menu-btnss[data-category="all"]');
+      allButton.classList.add('active-btn');
+      activeButton = allButton;
+    });
+    function filterItems(category, button) {
+      let filteredItems;
+      if (category === 'all') {
+        filteredItems = foodItems;
+      } else {
+        filteredItems = foodItems.filter(item => item.category === category);
+      }
+      generateFoodItems(filteredItems);
+      if (activeButton) {
+        activeButton.classList.remove('active-btn');
+      }
+      button.classList.add('active-btn');
+      activeButton = button;
+    }
+  </script>
+
+  <!-- end pizza menu-items -->
+
+
+
+
+  <!-- User Review collection -->
+
+  <div id="containerss">
+    <h1 class="heads" id="review">Reviews <span> Honest Data </span></h1>
+    <div id="holder">
+      <div id="image">
+        <div class="img jobs"></div>
+        <div class="img zuck"></div>
+        <div class="img musk"></div>
+      </div>
+
+      <div id="right"></div>
+
+      <div id="text">
+        <div id="centerText">
+          <p class="quote">
+            <i class='fa fa-quote-left' style='font-size:30px;color:blue'></i> CodePen is a social development
+            environment. At its heart, it allows you to write code in the browser, and see the results of it as you
+            build. A useful and liberating online code editor for developers of any skill, and particularly empowering
+            for people learning to code. We focus primarily. <i class='fa fa-quote-right'
+              style='font-size:30px;color:blue'></i>
+          </p>
+          <p class="quote">
+            <i class='fa fa-quote-left' style='font-size:30px;color:blue'></i> We say social, because CodePen is a
+            community. Most creations on CodePen are public and open source. They are living things that other people
+            and the community can interact with, from a simple hearting, to leaving a comment, to forking and changing
+            for their own needs. <i class='fa fa-quote-right' style='font-size:30px;color:blue'></i>
+          </p>
+          <p class="quote">
+            <i class='fa fa-quote-left' style='font-size:30px;color:blue'></i> People use CodePen for all sorts of
+            things: prototyping new ideas, reduced test cases for bugs, sending clients things to look at, evaluating
+            potential hires, to finding inspiration. People also use CodePen as a sort of resume and portfolio, showing
+            off their best design and development work. <i class='fa fa-quote-right'
+              style='font-size:30px;color:blue'></i>
+          </p>
+        </div>
+
+        <navigatee>
+          <a id="leftBtn" class="prev"><i class="fa fa-arrow-left"></i></a>
+          <a id="rightBtn" class="next"><i class="fa fa-arrow-right"></i></a>
+        </navigatee>
+      </div>
+    </div>
+
+    <div id="bg">
+      <div class="slide jobs-bg"></div>
+      <div class="slide zuck-bg"></div>
+      <div class="slide musk-bg"></div>
+    </div>
+
+    <div id="navigatee-cirlces">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+  </div>
+  <!--end  User Review collection -->
+
+
+  <!-- news footer -->
+
+  <div class='News-footer' style="margin-top: 30px;">
+    <div class='news'>
+      <span id='news-head'><b>News</b></span>
+    </div>
+    <pa class='N-text'>
+      <marquee direction='left'>
+        • <span> <b>Email :-</b>&nbsp;as906871@gmail.com</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>• <b>Address :-</b>&nbsp;e-118, barra-8, kanpur Nagar </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>• <b>Contact Number :-</b> &nbsp; 9792313578 </span>
+      </marquee>
+    </pa>
+  </div>
+
+  <!-- end new footer -->
+
+
+  <!-- custom js file link -->
+  <script src="script.js"></script>
+</body>
+
+</html>
